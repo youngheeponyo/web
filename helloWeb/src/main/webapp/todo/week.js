@@ -1,42 +1,35 @@
 //calendar
 
-const cal = {
-	weeks:[
-		{week:'일'},
-		{week:'월'},
-		{week:'화'},
-		{week:'수'},
-		{week:'목'},
-		{week:'금'},
-		{week:'토'},
-	]
-};
 
-function makeBody(day){
+function makeBody(){
 	let tb = '';
 	tb += '<tr>';
 	for(let i=1;i<=31;i++){
+		if(i%7==0){
+			tb += '<td>'+i+'</td>';
+			tb += '</tr>';
+		}else{
 		tb += '<td>'+i+'</td>'
+		}
 	}
-	tb += '</tr>';
-	//return tb;
+	
+	return tb;
 }
-	function makeHead(week=[]){
+	function makeHead(days=[]){
 		let tb = '';
-		tb += '<table><tbody>';
-		tb += '<tr><th>'+week[0]+'</th>';
-		tb += '<th>'+week[1]+'</td>';
-		tb += '<th>'+week[2]+'</th>';
-		tb += '<th>'+week[3]+'</th>';
-		tb += '<th>'+week[4]+'</th>';
-		tb += '<th>'+week[5]+'</th>';
-		tb += '<th>'+week[6]+'</th></tr>';
-		week.forEach(function(item){
-			tb += makeBody(item);
-		})
+		tb += '<table border="1"><tbody>';
+		tb += '<tr bgcolor="greenblue">';
+		tb += '<th>일</th>';
+		tb += '<th>월</th>';
+		tb += '<th>화</th>';
+		tb += '<th>수</th>';
+		tb += '<th>목</th>';
+		tb += '<th>금</th>';
+		tb += '<th>토</th>';
+		tb += '</tr>';
+		tb += makeBody();
 		tb += '</tbody></table>';
-	document.getElementById('show').innerHTML = tb;
+		return tb;
 	}
-
-makeHead(cal.weeks);
+	document.getElementById('show').innerHTML += makeHead();
 
