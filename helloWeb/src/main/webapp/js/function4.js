@@ -28,15 +28,16 @@ document.getElementById('saveBtn').onclick = function(e){
     let age = document.getElementById('age').value;
     let height = document.getElementById('height').value;
 
+    if(!name || !age || !height){
+        alert('값을 입력하세요');
+        return;	//함수종료
+    }
+    
     const mem = new Member(name,age,height);
     let str = makeTr(mem);	//<tr></tr>
 
-    if(document.getElementById('name').value == null){
-        alert('입력해주세요')
-    }else{
-        document.getElementById('list').innerHTML += str;
-        // function Member(), makeTr(member)
-    }
+    document.getElementById('list').innerHTML += str;
+    // function Member(), makeTr(member)
 
     document.getElementById('name').value = "";
     document.getElementById('age').value = "";
