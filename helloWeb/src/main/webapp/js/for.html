@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js/for.html</title>
+<script>
+    console.log('javascript start!');
+    // 5번 반복
+    for(let i=0;i<5;i++){
+        console.log(i);
+    }
+
+    // 배열과 for문 활용
+    let numary = [1,2,3,4,5];;   //배열객체
+    let sum = 0;
+    console.log(typeof numary);
+
+    for(let i=0;i<numary.length;i++) {      //let,const : 블럭단위의 변수지정(블록 안에서만 정의가 됨) //var는 블럭 단위 의미가 없어서 밖에서도 사용가능(전역 or 지역(함수안에서 선언))
+        sum += numary[i];
+    }
+
+    console.log('sum의 값 : ' + sum);
+    sum = 0;
+    //확장 for..of
+    for(let val of numary){     //인덱스 값은 지정안되지만, 전체 값을 가져올 때는 편함
+        sum += val;
+    }
+    console.log(`sum의 값은 ${sum}이다.`);
+
+    sum = 0;
+    let sum2 = 0;
+    //배열.forEach(함수) p61
+    numary.forEach(function(item,idx,ary){     //첫번째는 배열의 요소, 두번째는 인덱스넘버, 세번째는 배열
+        if(item % 2 == 0){      //짝수조건
+            sum += item;
+        }
+        if(idx <= 2){
+            sum2 += item;       //인덱스가 앞의 3개만 가져오고 싶을 때
+        }
+    });
+    console.log(`sum의 값 : ${sum}`);
+    console.log(`sum2의 값 :  ${sum2}`);
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

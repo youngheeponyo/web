@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js/for2.html</title>
+</head>
+<body>
+    <script>
+        const studentAry = [
+            {sno : 1, sname : '홍길동', score : 80},
+            {sno : 2, sname : '박민서', score : 88},
+            {sno : 3, sname : '홍민기', score : 92},
+            {sno : 4, sname : '서영희', score : 99}
+        ]
+
+        let sum = 0;
+        let avg = 0;
+        studentAry.forEach(function(item,idx){
+            console.log(`이름 : ${item.sname}`);
+            sum += item.score;
+            avg = sum/studentAry.length
+            avg = avg.toFixed(2);
+        });
+        console.log(`점수의 합은 ${sum}이고 평균은 ${avg}입니다`)
+
+        
+    </script>
+</body>
+</html>
