@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+	<record>
+		<id>1</id>
+		<first_name>Antonina</first_name>
+		<email>amccaster0@goodreads.com</email>
+	</record>
+	<record>
+		<id>2</id>
+		<first_name>Monika</first_name>
+		<email>mfulker1@opera.com</email>
+	</record>
+	<record>
+		<id>3</id>
+		<first_name>Andee</first_name>
+		<email>abroom2@independent.co.uk</email>
+	</record>
+	<record>
+		<id>4</id>
+		<first_name>Ronny</first_name>
+		<email>rupchurch3@theguardian.com</email>
+	</record>
+	<record>
+		<id>5</id>
+		<first_name>Archibold</first_name>
+		<email>aebenezer4@eepurl.com</email>
+	</record>
+</dataset>
