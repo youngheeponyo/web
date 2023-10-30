@@ -2,12 +2,40 @@ package org.yedam.service;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data	//getter,setter 다 쓰지 않아도 data 쓰면 다 포함되어서 만들어짐
-@AllArgsConstructor	//모든 매개값을 가진 생성자를 만드는 방법
-@NoArgsConstructor	//아무 매개값을 가지지 않는 생성자 만드는 방법
+@Data
+@AllArgsConstructor
 public class MemberVO {
+	public MemberVO(String mid, String pass, String name, String phone) {
+		// TODO Auto-generated constructor stub
+	}
+	public MemberVO() {
+		// TODO Auto-generated constructor stub
+	}
+	public String getMid() {
+		return mid;
+	}
+	public void setMid(String mid) {
+		this.mid = mid;
+	}
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 	private String mid;
 	private String pass;
 	private String name;

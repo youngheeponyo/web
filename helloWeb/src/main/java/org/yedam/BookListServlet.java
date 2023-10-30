@@ -32,7 +32,7 @@ public class BookListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BookService bs = new BookServiceImpl();
 		List<BookVO> list = bs.booklist();
-		response.setContentType("text/xml;charset=utf-8");
+		response.setContentType("text/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		String str = "[";
 		int count = 0;
@@ -42,7 +42,7 @@ public class BookListServlet extends HttpServlet {
 			str += "\"book_title\":\""+vo.getBook_title()+"\",";
 			str += "\"book_author\":\""+vo.getBook_author()+"\",";
 			str += "\"book_press\":\""+vo.getBook_press()+"\",";
-			str += "<book_price\":\""+vo.getBook_price()+"\"";
+			str += "\"book_price\":\""+vo.getBook_price()+"\"";
 			str += "}";
 			if(++count != list.size()) {
 				str += ",";
