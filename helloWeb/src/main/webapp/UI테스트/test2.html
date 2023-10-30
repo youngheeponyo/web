@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test2.html</title>
+</head>
+<body>
+	<div id="show"></div>
+	<script>
+	const today = new Date();
+	let day = today.getDate();
+
+		function makeDay(){
+			let tb = '<tbody><tr>'
+				tb += '<td></td>';
+				tb += '<td></td>';
+				tb += '<td></td>';
+			for(let i=1;i<=30;i++){
+				if(i%7==4){
+					tb += '<td>'+i+'</td>';
+					tb += '</tr><tr>'	
+				}
+				else{
+					tb += '<td>'+i+'</td>';
+				}
+			}
+			tb += '</tr></tbody>';
+			return tb;
+		}
+		function makeHead(){
+			let tb = '<table border="1"><thead><tr>';
+			tb += '<th>일</th>';
+			tb += '<th>월</th>';
+			tb += '<th>화</th>';
+			tb += '<th>수</th>';
+			tb += '<th>목</th>';
+			tb += '<th>금</th>';
+			tb += '<th>토</th>';
+			tb += '</tr>';
+			tb += makeDay();
+			tb += '</thead></table>'
+			return tb
+		}
+		const novemberCal = {
+			show(){
+				document.getElementById('show').innerHTML = makeHead();
+				
+			}
+		}
+		novemberCal.show();
+		
+	</script>
+</body>
+</html>

@@ -12,12 +12,7 @@ const table = {
 	makeBody(dataAry = [{mid,pass,name,phone}]){
 		let bodyTag = "<tbody id='list'>"
 		dataAry.forEach(data => {
-			bodyTag += "<tr>";
-			for(let prop in data){
-				bodyTag += "<td>" + data[prop] + "</td>";
-			}
-			bodyTag += "</tr>";
-			
+			bodyTag += this.makeTr(data);
 		})
 		bodyTag += "</tbody>"
 		return bodyTag;
@@ -27,6 +22,14 @@ const table = {
 		tableTag += this.makeHead(titleAry) + this.makeBody(dataAry);
 		tableTag += "</table>"
 		return tableTag;
+	},
+	makeTr(member={}){
+		let trTag = "<tr onclick='showInfo(event,this)'>";
+		for(let prop in member){
+			trTag += "<td>"+member[prop]+"</td>"
+		}
+		trTag += "</tr>"
+		return trTag;
 	}
 }
 
