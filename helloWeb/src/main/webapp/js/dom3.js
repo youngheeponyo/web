@@ -36,6 +36,7 @@ function fetchCallback(result){
 		//console.log(e.target.value);	//선택한 값
 		//선택된 시도 값에 대한 정보만 보여주고 싶음(센터명)-필터링한 값
 		let searchSido = e.target.value;
+		
 		let filterAry = rawData.filter(center => searchSido == center.sido);
 		genTable(filterAry);
 	}
