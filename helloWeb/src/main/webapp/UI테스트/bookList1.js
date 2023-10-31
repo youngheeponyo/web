@@ -2,7 +2,7 @@ const table = {
 
     makeHead(titleAray = ['도서코드', '도서명', '저자', '출판사', '가격', '삭제']) {
         let headTag = "<thead><tr>";
-        headTag += "<th><input type='checkbox' onclick='selectAll(this)'></th>"
+        headTag += "<th><input type='checkbox'></th>"
 
         titleAray.forEach(title => {
             headTag += "<th>" + title + "</th>";

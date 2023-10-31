@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>js/fetch.html</title>
+	<script type="module" src="fetch1.js"></script>
+</head>
+
+<body>
+	<div id="show"></div>
+	<script>
+		//promise 객체(fullfilled:처리완료, pending:처리중, rejected:처리안됨)
+		const promise = new Promise(function (resolve) {
+			setTimeout(function () {
+				console.log('실행');
+				resolve('Success');	//성곻하면 실행할 함수에 success를 넘김
+			}, 500);
+		});
+
+		promise		//순서대로 진행되면서 에러가 있는 부분이 있으면 캐치부분으로 넘어감
+			.then((resolve) => {
+				console.log('then(resolve) : ', resolve);
+				return 'OK';	//promise 반환
+			})			//정상적으로 처리가 되면 then으로 넘어가 then이 실행
+			.then((result) => {
+				console.log('then(result) :', result);
+				return message;	//message는 정의를 하지 않았기 때문에 에러가 나서 캐치 부분으로 넘어감
+			})
+			.catch((err) => {
+				console.log('error : ', err)	//앞부분에서 에러가 나먄 더이상 넘어가지 않고 바로 catch부분으로 넘어옴
+			})
+	</script>
+</body>
+
+</html>
