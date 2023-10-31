@@ -41,7 +41,7 @@ function modMember(e){
 		let result = JSON.parse(xhtp.responseText);
 		//데이터 영역의 tr
 		document.querySelectorAll('#list tr').forEach( tr => {
-			if(tr.children[0].innerHTML==result.vo.mid){
+			if(tr.children[0].innerHTML == result.vo.mid){
 				tr.children[1].innerHTML = result.vo.pass;
 				tr.children[2].innerHTML = result.vo.name;
 				tr.children[3].innerHTML = result.vo.phone;			

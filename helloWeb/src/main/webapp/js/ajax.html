@@ -29,10 +29,10 @@
 	<div id="show"></div>
 	<script>	
 		function showInfo(e,obj){
-			console.log(e.target.parentElement);		//e.target:td
-			console.log(obj);	//this:tr
+			//console.log(e.target.parentElement);		//e.target:td
+			//console.log(obj);	//this:tr
 			//tr하위의 아이디,비번,이름,연락처 가져오기
-			console.log(obj.children)		//tr하위요소
+			//console.log(obj.children)		//tr하위요소
 			let mid = obj.children[0].innerHTML;
 			let pass = obj.children[1].innerHTML;
 			let name = obj.children[2].innerHTML;

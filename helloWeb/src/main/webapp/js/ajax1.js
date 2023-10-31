@@ -41,12 +41,12 @@ function loadJSON(){
 	let result = JSON.parse(xhtp.responseText);
 	console.log(result);
 	let titles = ["회원번호","비번","이름","연락처"];
-	let dataAry = [];
-	result.forEach(member =>{
-		dataAry.push({mid:member.mid,pass:member.pass,name:member.name,phone:member.phone})
-	})
-	result = table.makeTable(titles,result);
-	document.getElementById('show').innerHTML = result;
+	//let dataAry = [];
+	//result.forEach(member =>{
+	//	dataAry.push({mid:member.mid,pass:member.pass,name:member.name,phone:member.phone})
+	//})
+	let tb = table.makeTable(titles,result);
+	document.getElementById('show').innerHTML = tb;
 }
 
 function loadXML(){
