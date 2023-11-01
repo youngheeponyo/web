@@ -1,8 +1,7 @@
 package org.yedam.service;
 
-import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
+
 public class MemberVO {
 	private String mid;
 	private String pass;
@@ -13,7 +12,10 @@ public class MemberVO {
 		// TODO Auto-generated constructor stub
 	}
 	public MemberVO(String mid,String pass,String name, String phone) {
-		// TODO Auto-generated constructor stub
+		this.mid = mid;
+		this.pass = pass;
+		this.name = name;
+		this.phone = phone;
 	}
 	public String getMid() {
 		return mid;

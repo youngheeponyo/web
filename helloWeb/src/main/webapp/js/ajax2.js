@@ -14,11 +14,12 @@ function addMember(e) {
 	xhtp.open('get','../AddMemberServlet.html?mid='+mid+'&pass='+pass+'&name='+name+'&phone='+phone);
 	xhtp.send();
 	xhtp.onload = function(){
-		console.log(xhtp.responseText);
+		console.log('1=',xhtp.responseText);
 		//사용자가 입력한 값을 return코드가 ok이면 {vo:mid,pass,name,phone}
 		//tr 생성하여 td도 생성 tbody id값이 list인 것에 추가해주기=>화면에 출력
 		//return코드가 ng이면 alert을 사용하여 에러발생 경고창 띄우기 후 list 추가 금지
 		let result = JSON.parse(xhtp.responseText);
+		console.log('result=',result)
 		if(result.retCode=="OK"){
 			document.getElementById('list').innerHTML += table.makeTr(result.vo);
 		}else{
@@ -41,6 +42,7 @@ function modMember(e){
 		let result = JSON.parse(xhtp.responseText);
 		//데이터 영역의 tr
 		document.querySelectorAll('#list tr').forEach( tr => {
+			console.log(result)
 			if(tr.children[0].innerHTML == result.vo.mid){
 				tr.children[1].innerHTML = result.vo.pass;
 				tr.children[2].innerHTML = result.vo.name;

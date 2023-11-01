@@ -3,6 +3,7 @@
  */
 
 export default {
+	hiddenFields:['lat','lng'],
 	makeHead: function(titles = ['주소', '센터명']) {
 		//thead>tr>th*n
 		let thead = document.createElement('thead');
@@ -24,8 +25,13 @@ export default {
 		return tbody;
 	},
 	makeTr: function(center = {}) {
-		let tr = document.createElement('tr');
+		let tr = document.createElement('tr');arguments
+		tr.setAttribute('data-lat',center.lat);		// 숨긴 데이터 값을 다시 담아줌	//tr.dataset.lat
+		tr.setAttribute('data-lng',center.lng);	
 		for (let prop in center) {
+			if(this.hiddenFields.indexOf(prop)>-1){
+				continue;		//위도와 경도 값 숨기기
+			}
 			let td = document.createElement('td');
 			td.innerHTML = center[prop];
 			tr.append(td);
