@@ -92,7 +92,7 @@ public class StudentDAO {
 	}
 	List<StudentVO> list() {
 			List<StudentVO> list = new ArrayList<>();
-			String sql = "select * from student";
+			String sql = "SELECT * FROM STUDENT";
 			conn = dao.getConnection();
 			try {
 				psmt = conn.prepareStatement(sql);
@@ -113,7 +113,7 @@ public class StudentDAO {
 	}
 	
 	public StudentVO select(String sid) {
-		String sql = "select * from student where student_id = ?";
+		String sql = "SELECT * FROM STUDENT WHERE STUDENT_ID = ?";
 		conn = dao.getConnection();
 		StudentVO vo = new StudentVO();
 		try {

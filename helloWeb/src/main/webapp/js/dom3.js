@@ -55,7 +55,7 @@ function genTable(rawData = [], page = 1) {
 	//초기화
 	document.querySelector("#show").innerHTML = '';
 
-	//보여줘야 할 데이터의 첫번째와 마지막을 계산(1~10,11~20)
+	//보여줘야 할 데이터의 첫번째와 마지막을 계산(1~5)
 	let startNo = (page - 1) * 5;		//인덱스 값을 맞추기 위해 1을 버림
 	let endNo = page * 5;
 
