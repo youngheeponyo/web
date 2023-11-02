@@ -25,5 +25,4 @@ public class RemStudentServlet extends HttpServlet{
 			resp.getWriter().print("{\"retCode\":\"NG\"}");		//사용자 페이지에 문자열을 보내겠습니다
 		};
 	}
-	
 }
