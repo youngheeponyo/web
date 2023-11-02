@@ -50,7 +50,7 @@ function modCallback(e) {
 			if (result.retCode == 'OK') {
 				alert('수정 성공!');
 				let targetTR = document.querySelector('tr[data-sid='+result.vo.studentId+']');
-				let newTr = makeTr(result.vo);addCallback
+				let newTr = makeTr(result.vo);
 				let parentElem = document.querySelector('#list');
 				parentElem.replaceChild(newTr,targetTR)	//부모요소에서 자식요소를 바꿀 때
 				document.getElementById("myModal").style.display = 'none';
