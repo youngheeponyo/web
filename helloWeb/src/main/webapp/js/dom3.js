@@ -68,6 +68,9 @@ function genTable(rawData = [], page = 1) {
 	if(beginPage<1){
 		beginPage=page;
 	}
+	if(endPage<6){
+		endPage = Math.ceil(page/5)*5
+	}
 	if (beginPage > 1) {
 		prevPage = true;
 	}

@@ -92,7 +92,7 @@ public class StudentDAO {
 	}
 	List<StudentVO> list() {
 			List<StudentVO> list = new ArrayList<>();
-			String sql = "SELECT * FROM STUDENT";
+			String sql = "SELECT * FROM STUDENT ORDER BY STUDENT_BIRTHDAY";
 			conn = dao.getConnection();
 			try {
 				psmt = conn.prepareStatement(sql);
