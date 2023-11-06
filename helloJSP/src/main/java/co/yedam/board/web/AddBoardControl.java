@@ -30,7 +30,7 @@ public class AddBoardControl implements Command {
 			vo.setContent(content);
 		} else if (req.getMethod().equals("POST")) {
 			String saveDir = req.getServletContext().getRealPath("images");
-			int size = 5 * 1024 * 1024;
+			int size = 10 * 2048 * 2048;
 			// mulripartRequest mr 을 하면 쉽게 파일이 업로드가 됨(라이브러리에 cos 추가)
 			try {
 				MultipartRequest mr = new MultipartRequest(req, // 요청정보

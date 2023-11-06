@@ -25,7 +25,11 @@
 			<tr>
 				<td><%=vo.getBoardNo()%></td>
 				<td><a href="getBoard.do?bno=<%=vo.getBoardNo()%>"><%=vo.getTitle()%></a></td>
+				<%if(vo.getWriter().equals("M001")){%>
+				<td style="color:red">관리자</td>
+				<%}else{ %>
 				<td><%=vo.getWriter()%></td>
+				<%} %>
 				<td><%=vo.getWriteDate()%></td>
 			</tr>
 			<%

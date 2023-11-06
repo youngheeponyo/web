@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import co.yedam.board.service.BoardService;
+import co.yedam.board.service.MemberVO;
 import co.yedam.board.serviceImpl.BoardServiceImpl;
 
 public class LoginControl implements Command {
@@ -20,9 +21,11 @@ public class LoginControl implements Command {
 		//request는 요청 할때마다 사라지고 바뀌는데 session은 바뀌지 않음
 		
 		BoardService svc = new BoardServiceImpl();
+		MemberVO vo = svc.loginCheck(id, pw);
 		if(svc.loginCheck(id, pw)!=null) {
 			HttpSession session = req.getSession();
 			session.setAttribute("logId", id);
+			session.setAttribute("respon", vo.getResponsibility());
 			try {
 				res.sendRedirect("boardList.do");
 			} catch (IOException e) {

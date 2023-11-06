@@ -18,6 +18,7 @@
 <body>
 	<%
 	String logId = (String) session.getAttribute("logId");
+	String respon = (String) session.getAttribute("respon");
 	%>
 	<div class="d-flex" id="wrapper">
 		<!-- Sidebar-->
@@ -38,7 +39,7 @@
 				<%}%>
 				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="boardList.do">게시글 목록</a> 
 				<!-- 관리자 권한을 가졌을 때만 보여주기 -->
-				<%if(logId!=null && logId.equals("M001")){ %>
+				<%if(respon!=null && respon.equals("Admin")){ %>
 				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="memberList.do">회원관리</a>
 				<%} %>
 				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a> 

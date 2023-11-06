@@ -171,14 +171,17 @@ public class BoardDAO {
 			psmt.setString(2, pw);
 			rs = psmt.executeQuery();
 			if(rs.next()) {
+				vo.setMid(rs.getString("mid"));
+				vo.setPass(rs.getString("pass"));
 				vo.setResponsibility(rs.getString("responsibility"));
+				return vo;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			close();
 		}
-		return vo;
+		return null;
 	}
 	
 	

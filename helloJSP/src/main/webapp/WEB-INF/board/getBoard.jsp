@@ -45,7 +45,7 @@
 					<input type="button" value="삭제">
 				</td>
 			</tr>
-			<%}else if(logId.equals("M001")){ %>
+			<%}else if(respon.equals("Admin")){ %>
 			<tr>
 				<td colspan="4">
 					<input type="submit" value="수정">
