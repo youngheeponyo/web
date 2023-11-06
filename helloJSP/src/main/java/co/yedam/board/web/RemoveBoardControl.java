@@ -1,36 +1,36 @@
 package co.yedam.board.web;
 
-
-
 import java.io.IOException;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import co.yedam.board.service.BoardService;
+import co.yedam.board.serviceImpl.BoardServiceImpl;
 import co.yedam.common.Command;
 
-public class boardFormControl implements Command {
+public class RemoveBoardControl implements Command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) {
-		HttpSession session = req.getSession();
-		if(session.getAttribute("logId")==null) {
+		String bno = req.getParameter("bno");
+		BoardService svc = new BoardServiceImpl();
+		
+		if(svc.removeBoard(Integer.parseInt(bno))) {
 			try {
-				res.sendRedirect("loginForm.do");
+				res.sendRedirect("boardList.do");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}else {
 			try {
-				req.getRequestDispatcher("WEB-INF/board/boardForm.jsp").forward(req, res);
-			} catch (Exception e) {
+				res.sendRedirect("modifyForm.do");
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-	
-		
-		
+
 	}
 
 }

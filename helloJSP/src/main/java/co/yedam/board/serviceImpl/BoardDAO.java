@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.yedam.board.service.BoardVO;
+import co.yedam.board.service.MemberVO;
 import co.yedam.common.DataSource;
 
 public class BoardDAO {
@@ -107,7 +108,7 @@ public class BoardDAO {
 	
 	public int update(BoardVO vo) {
 		int n = 0;
-		sql = "UPDATE FROM BOARD SET TITLE = ?, CONTENT = ?, WRITER = ?, IMAGE = ?, UPDATE_DATE = SYSDATE WHERE BOARD_NO = ?";
+		sql = "UPDATE BOARD SET TITLE = ?, CONTENT = ?, WRITER = ?, IMAGE=?, WRITE_DATE = SYSDATE WHERE BOARD_NO = ?";
 		conn = dao.getConnection();
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -130,7 +131,6 @@ public class BoardDAO {
 		int n = 0;
 		sql = "DELETE FROM BOARD WHERE BOARD_NO = ?";
 		conn = dao.getConnection();
-		BoardVO vo = new BoardVO();
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1,boardNo);
@@ -146,9 +146,8 @@ public class BoardDAO {
 	
 	public int updateCnt(int boardNo) {
 		int n = 0;
-		sql = "update board set view_cnt=view_cnt+1 where board_no = ?";
+		sql = "UPDATE BOARD SET VIEW_CNT=VIEW_CNT+1 WHERE BOARD_NO = ?";
 		conn = dao.getConnection();
-		BoardVO vo = new BoardVO();
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1,boardNo);
@@ -160,6 +159,51 @@ public class BoardDAO {
 			close();
 		}
 		return 0;
+	}
+	
+	public MemberVO getUser(String id, String pw) {
+		sql = "SELECT * FROM MEMBER WHERE MID=? and PASS=?";
+		conn = dao.getConnection();
+		MemberVO vo = new MemberVO();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			psmt.setString(2, pw);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				vo.setResponsibility(rs.getString("responsibility"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return vo;
+	}
+	
+	
+	public List<MemberVO> member() {
+		sql = "SELECT * FROM MEMBER ORDER BY MID";
+		conn = dao.getConnection();
+		List<MemberVO> list = new ArrayList<MemberVO>();
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				MemberVO vo = new MemberVO();
+				vo.setMid(rs.getString("mid"));
+				vo.setPass(rs.getString("pass"));
+				vo.setName(rs.getString("name"));
+				vo.setPhone(rs.getString("phone"));
+				vo.setResponsibility(rs.getString("responsibility"));
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return list;
 	}
 
 }

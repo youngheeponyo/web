@@ -3,12 +3,17 @@ package co.yedam.common;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class SecondControl implements Command {
+public class MainControl implements Command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) {
-		// TODO Auto-generated method stub
-		System.out.println("SecondControl이 현재 진행 중입니다");
+		try {
+			req.getRequestDispatcher("WEB-INF/main/main.jsp").forward(req, res);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+
 	}
 
 }

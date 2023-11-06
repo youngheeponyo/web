@@ -8,7 +8,7 @@
 </head>
 <body>
 	<%
-	response.sendRedirect("boardList.do");	//바로 여기(boardList.do)로 열리도록 요청을 한것
+	response.sendRedirect("main.do");	//바로 여기(boardList.do)로 열리도록 요청을 한것
 	%>
 </body>
 </html>
