@@ -9,6 +9,7 @@
 	<%
 	List<BoardVO> list = (List<BoardVO>) request.getAttribute("list");
 	%>
+	<p><a href="boardForm.do">등록하기</a></p>
 	<table class="table">
 		<thead>
 			<tr>
@@ -16,6 +17,7 @@
 				<th>제목</th>
 				<th>작성자</th>
 				<th>작성일시</th>
+				<th>최근 수정날짜</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -31,11 +33,11 @@
 				<td><%=vo.getWriter()%></td>
 				<%} %>
 				<td><%=vo.getWriteDate()%></td>
+				<td><%=vo.getLastUpdate()%></td>
 			</tr>
 			<%
 			}
 			%>
 		</tbody>
 	</table>
-	<p><a href="boardForm.do">등록하기</a></p>
 <%@include file="../layout/footer.jsp" %>
