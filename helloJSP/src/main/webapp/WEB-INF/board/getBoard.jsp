@@ -107,11 +107,12 @@ BoardVO vo = (BoardVO) request.getAttribute("bno");
 		.catch(err=>console.log(err));
 
 		//댓글등록 버튼
+		let writer = "<%=logId%>";
 		document.querySelector('#addReply').addEventListener('click',function(e){
 			let reply = document.querySelector('#content').value;
-			let writer = "<%=logId%>";
-			if(!bno||!writer||!reply){
-				alert('값을 확인하세요');
+			if(!bno||writer==null||!reply){
+				console.log(bno+writer+reply)
+				alert('로그인 후 사용하실 수 있습니다');
 				return;
 			}
 			//ajax 호출
@@ -124,14 +125,13 @@ BoardVO vo = (BoardVO) request.getAttribute("bno");
 			.then(result=>{
 				if(result.retCode=='OK'){
 					document.querySelector('#list').append(makeRow(result.vo));
-					document.querySelector('#content').value=' ';
+					document.querySelector('#content').value='';
 				}else{
 					alert('Error');
 				}
 
 			})
 		})
-
 
 		function makeRow(reply){
 			let temp = document.querySelector('#template').cloneNode(true);
@@ -140,6 +140,14 @@ BoardVO vo = (BoardVO) request.getAttribute("bno");
 			temp.querySelector('b').innerHTML = ' '+reply.reply;
 			temp.querySelector('span:nth-of-type(2)').innerHTML = ' '+reply.replyer;
 			temp.querySelector('span:nth-of-type(3)').innerHTML = ' '+reply.replyDate;
+			temp.querySelector('button').addEventListener('click',function(e){
+				if(writer != null && reply.replyer==writer){
+					fetch('delReply.do?replyNo='+reply.replyNo)
+					.then(resolve=>temp.remove());
+				}else{
+					alert('삭제 권한이 없습니다')
+				}
+			})
 			return temp;
 		}
 

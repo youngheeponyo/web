@@ -57,6 +57,7 @@ public class FrontController extends HttpServlet {
 		map.put("/removeBoard.do", new RemoveBoardControl());
 		
 		//회원관리
+		map.put("/memberList.do", new MemberControl());
 		
 		//댓글목록
 		map.put("/replyList.do", new ReplyListControl());
@@ -75,8 +76,8 @@ public class FrontController extends HttpServlet {
 		String context = req.getServletContext().getContextPath();	//어떤 프로젝트인지에 대한 정보(helloJSP)
 		String page = uri.substring(context.length());
 		
-		//System.out.println("uri = "+uri);
-		//System.out.println("page = "+page);
+		System.out.println("uri = "+uri);
+		System.out.println("page = "+page);
 		
 		Command controller = map.get(page);	//사용자가 요청한 페이지의 값을 맵의 값에서 찾기	
 		controller.execute(req, resp);
