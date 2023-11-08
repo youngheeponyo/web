@@ -1,11 +1,11 @@
 package co.yedam.common;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import co.yedam.reply.mapper.ReplyMapper;
-import co.yedam.reply.service.ReplyVO;
 
 public class MainExe {
 	public static void main(String[] args) {
@@ -13,10 +13,10 @@ public class MainExe {
 		SqlSession session = DataSourceMybatis.getInstance().openSession(true);
 		ReplyMapper mapper = session.getMapper(ReplyMapper.class);
 		
-		List<ReplyVO> list = mapper.replyList(1);
-		list.forEach(vo->System.out.println("전체조회 = "+vo));
+		//List<ReplyVO> list = mapper.replyList(1);
+		//list.forEach(vo->System.out.println("전체조회 = "+vo));
 		
-		System.out.println("단건조회 = "+mapper.selectReply(3));
+		//System.out.println("단건조회 = "+mapper.selectReply(3));
 		
 //		ReplyVO vo = new ReplyVO();
 //		vo.setBoardNo(1);
@@ -26,6 +26,9 @@ public class MainExe {
 		
 //		System.out.print("삭제="+mapper.deleteReply(7));
 		
+		mapper.replyList(7,2).forEach(rep->System.out.println(rep));
 		
+		List<Map<String,Object>> map = mapper.getReplyCountPerWriter();
+		System.out.println(map);
 	}
 }

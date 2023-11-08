@@ -18,7 +18,7 @@
 	</insert>
 	
 	<update id="update" parameterType="co.yedam.board.service.BoardVO">
-		UPDATE BOARD SET TITLE = #{title}, CONTENT = #{content}, WRITER = #{writer}, IMAGE=#{image}, LAST_UPDATE = SYSDATE WHERE BOARD_NO = #{boardNo}
+		UPDATE BOARD SET TITLE = #{title}, CONTENT = #{content}, WRITER = #{writer}, IMAGE=nvl(#{image},image), LAST_UPDATE = SYSDATE WHERE BOARD_NO = #{boardNo}
 	</update>
 	
 	<delete id="delete" parameterType="int">

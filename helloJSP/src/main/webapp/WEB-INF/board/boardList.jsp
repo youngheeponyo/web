@@ -2,13 +2,14 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="../layout/menu.jsp" %>
-<%@include file="../layout/header.jsp" %>
+	
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<jsp:include page="../layout/menu.jsp"></jsp:include>
+<jsp:include page="../layout/header.jsp"></jsp:include>
 
 	<h3>게시판 목록</h3>
-	<%
-	List<BoardVO> list = (List<BoardVO>) request.getAttribute("list");
-	%>
 	<p><a href="boardForm.do">등록하기</a></p>
 	<table class="table">
 		<thead>
@@ -21,23 +22,23 @@
 			</tr>
 		</thead>
 		<tbody>
-			<%
-			for (BoardVO vo : list) {
-			%>
-			<tr>
-				<td><%=vo.getBoardNo()%></td>
-				<td><a href="getBoard.do?bno=<%=vo.getBoardNo()%>"><%=vo.getTitle()%></a></td>
-				<%if(vo.getWriter().equals("M001")){%>
-				<td style="color:red">관리자</td>
-				<%}else{ %>
-				<td><%=vo.getWriter()%></td>
-				<%} %>
-				<td><%=vo.getWriteDate()%></td>
-				<td><%=vo.getLastUpdate()%></td>
-			</tr>
-			<%
-			}
-			%>
+			<c:forEach items="${list }" var="vo">
+				<tr>
+					<td>${vo.boardNo }</td>
+					<td><a href="getBoard.do?bno=${vo.boardNo }">${vo.title }</a></td>
+					<c:choose>
+						<c:when test="${vo.writer=='M001' }">
+							<td style="color:red">관리자</td>
+						</c:when>
+						<c:otherwise>
+							<td>${vo.writer }</td>
+						</c:otherwise>
+					</c:choose>
+					<td><fmt:formatDate value="${vo.writeDate }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
+					<td><fmt:formatDate value="${vo.lastUpdate }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
+				</tr>
+			</c:forEach>
+			
 		</tbody>
 	</table>
-<%@include file="../layout/footer.jsp" %>
+<jsp:include page="../layout/footer.jsp"></jsp:include>
