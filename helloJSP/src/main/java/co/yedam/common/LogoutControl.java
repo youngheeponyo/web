@@ -14,7 +14,7 @@ public class LogoutControl implements Command {
 		
 		//세션 삭제 후 첫 페이지로 이동
 		try {
-			res.sendRedirect("main.do");
+			res.sendRedirect("boardList.do");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

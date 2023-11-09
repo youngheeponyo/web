@@ -16,7 +16,7 @@
 			console.log(result);
 			let dataAry = [['작성자','횟수']];
 			result.forEach(data => {
-				dataAry.push([data.REPLYER,data.CNT])
+				dataAry.push([data.replyer,data.cnt])
 			})
 			console.log(dataAry);
 			var data = google.visualization.arrayToDataTable(dataAry);

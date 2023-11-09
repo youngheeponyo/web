@@ -123,8 +123,7 @@
 			fetch('replyList.do?bno='+ bno+'&page='+pg)
 			.then(resolve=>resolve.json())
 			.then(result=>{
-				console.log(result)
-					if(pg<0||result.list.length==0){
+					if(pg<0){
 						page = Math.ceil(result.dto.total/5)
 						showList(page);
 						return;
@@ -187,7 +186,7 @@
 		let admin = "${respon}";
 		document.querySelector('#addReply').addEventListener('click',function(e){
 			let reply = document.querySelector('#content').value;
-			if(!bno||writer=='null'||!reply){
+			if(!bno||writer==''||!reply){
 				console.log(bno+writer+reply)
 				alert('로그인 후 사용하실 수 있습니다');
 				return;
@@ -203,7 +202,7 @@
 				if(result.retCode=='OK'){
 					//document.querySelector('#list').append(makeRow(result.vo));
 					showList(-1);
-					document.querySelector('#content').value='';
+					//document.querySelector('#content').value='';
 				}else{
 					alert('Error');
 				}
@@ -220,7 +219,7 @@
 					.then(result=>{
 						if(result.retCode=='OK'){
 							e.target.parentElement.remove();
-							showList(page);
+							showList(page-1);
 						}else{
 							alert('에러가 났습니다')
 						}

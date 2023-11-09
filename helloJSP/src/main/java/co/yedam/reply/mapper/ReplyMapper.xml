@@ -36,7 +36,7 @@
 		select count(*) from reply where board_no = #{boardNo}
 	</select>
 	
-	<select id="getReplyCountPerWriter" resultType="map">
-		select replyer, count(*) cnt from reply group by replyer
+	<select id="getReplyCountPerWriter" resultType="map">	<!-- column명과 값을 받아오는 방식 -->
+		select replyer "replyer", count(*) "cnt" from reply group by replyer
 	</select>
 </mapper>

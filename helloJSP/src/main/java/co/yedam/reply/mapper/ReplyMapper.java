@@ -16,5 +16,5 @@ public interface ReplyMapper {
 	public int deleteReply(int ReplyNo);	//삭제
 	
 	public int getTotalCnt(int boardNo);
-	public List<Map<String,Object>> getReplyCountPerWriter(); 
+	public List<Map<String,Object>> getReplyCountPerWriter(); //배열 안에 배열 형태로 보여줘야하기에 List에 담음
 }
