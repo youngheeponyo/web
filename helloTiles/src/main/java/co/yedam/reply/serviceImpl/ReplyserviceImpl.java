@@ -1,4 +1,4 @@
-package co.yedam.reply.service;
+package co.yedam.reply.serviceImpl;
 
 
 import java.util.List;
@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 
 import co.yedam.common.DataSourceMybatis;
 import co.yedam.reply.mapper.ReplyMapper;
+import co.yedam.reply.service.ReplyService;
+import co.yedam.reply.service.ReplyVO;
 
 public class ReplyserviceImpl implements ReplyService{
 	

@@ -27,8 +27,10 @@ public class ModifyBoardcontrol implements Command {
 		vo.setWriter(writer);
 		vo.setImage(image);
 		
-		System.out.println(vo);
-		
+		System.out.println("titile"+title);
+		System.out.println("writer"+writer);
+		System.out.println("bno"+bno);
+	
 		BoardService svc = new BoardServiceImpl();
 		if(svc.editBoard(vo)) {
 			try {

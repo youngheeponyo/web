@@ -10,8 +10,7 @@ import co.yedam.board.service.BoardVO;
 import co.yedam.board.serviceImpl.BoardServiceImpl;
 import co.yedam.common.Command;
 
-public class ModifyBoardcontrol implements Command {
-
+public class ModifyFormControl implements Command {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) {
 		String bno = req.getParameter("bno");
@@ -23,13 +22,14 @@ public class ModifyBoardcontrol implements Command {
 		BoardVO vo = new BoardVO();
 		vo.setBoardNo(Integer.parseInt(bno));
 		vo.setTitle(title);
-		vo.setContent(content);
 		vo.setWriter(writer);
+		vo.setContent(content);
 		vo.setImage(image);
-		
-		System.out.println(vo);
+		System.out.println(vo.getWriter());
+		System.out.println(vo.getBoardNo());
 		
 		BoardService svc = new BoardServiceImpl();
+		
 		if(svc.editBoard(vo)) {
 			try {
 				res.sendRedirect("boardList.do");

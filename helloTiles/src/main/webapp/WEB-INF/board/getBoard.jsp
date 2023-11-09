@@ -214,6 +214,7 @@
 					fetch('delReply.do?replyNo='+reply.replyNo)
 					.then(resolve=>resolve.json())
 					.then(result=>{
+						console.log('결과!!'+result)
 						if(result.retCode=='OK'){
 							e.target.parentElement.remove();
 							showList(page-1);
@@ -229,7 +230,7 @@
 			
 			let temp = document.querySelector('#template').cloneNode(true);
 			temp.style.display='block';
-			temp.querySelector('span:nth-of-type(1)').innerHTML = ' '+reply.rn;
+			temp.querySelector('span:nth-of-type(1)').innerHTML = ' '+reply.replyNo;
 			temp.querySelector('b').innerHTML = ' '+reply.reply;
 			temp.querySelector('span:nth-of-type(2)').innerHTML = ' '+reply.replyer;
 			temp.querySelector('span:nth-of-type(3)').innerHTML = ' '+reply.replyDate;

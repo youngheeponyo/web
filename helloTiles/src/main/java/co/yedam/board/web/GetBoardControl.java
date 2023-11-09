@@ -9,10 +9,10 @@ import co.yedam.board.service.BoardVO;
 import co.yedam.board.serviceImpl.BoardServiceImpl;
 import co.yedam.common.Command;
 
-public class GetBoardControl implements Command {
+public class GetBoardControl implements co.yedam.common.Command {
 
 	@Override
-	public void execute(HttpServletRequest req, HttpServletResponse res) {
+	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		String path = "board/getBoard.tiles";
 		
 		String bno = req.getParameter("bno");
@@ -21,7 +21,7 @@ public class GetBoardControl implements Command {
 		req.setAttribute("bno", vo);
 		
 		try {
-			req.getRequestDispatcher(path).forward(req, res);
+			req.getRequestDispatcher(path).forward(req, resp);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,13 +1,13 @@
-package co.yedam.common;
+package co.yedam.board.web;
 
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class LogoutControl implements Command {
+import co.yedam.common.Command;
 
-	@Override
+public class LogoutControl implements Command{
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		req.getSession().invalidate();
 		
@@ -18,5 +18,4 @@ public class LogoutControl implements Command {
 			e.printStackTrace();
 		}
 	}
-
 }

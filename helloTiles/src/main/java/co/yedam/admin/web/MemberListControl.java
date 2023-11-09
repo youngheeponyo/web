@@ -12,15 +12,15 @@ import co.yedam.common.Command;
 public class MemberListControl implements Command {
 
 	@Override
-	public void execute(HttpServletRequest req, HttpServletResponse res) {
-		String path = "member/memberList.tiles";
+	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		String path = "admin/memberList.tiles";
 		
 		BoardService svc = new BoardServiceImpl();
 		List<co.yedam.board.service.MemberVO> list = svc.memberList();
 		req.setAttribute("list", list);
 		
 		try {
-			req.getRequestDispatcher(path).forward(req, res);
+			req.getRequestDispatcher(path).forward(req, resp);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

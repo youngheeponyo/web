@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>index</h3>
-	<a href="myapp.homepage.tiles">홈페이지</a>
+	<h1>환영합니다</h1>
+	<a href="main.do">게시판으로 이동하기</a>
 </body>
 </html>

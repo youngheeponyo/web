@@ -16,8 +16,14 @@ import co.yedam.admin.web.MemberListControl;
 import co.yedam.board.web.AddBoardControl;
 import co.yedam.board.web.BoardListControl;
 import co.yedam.board.web.GetBoardControl;
+import co.yedam.board.web.LoginControl;
+import co.yedam.board.web.LoginFormControl;
+import co.yedam.board.web.LogoutControl;
+import co.yedam.board.web.MainControl;
+import co.yedam.board.web.ModControl;
 import co.yedam.board.web.ModifyBoardcontrol;
 import co.yedam.board.web.ModifyControl;
+import co.yedam.board.web.ModifyFormControl;
 import co.yedam.board.web.RemoveBoardControl;
 import co.yedam.board.web.RemoveControl;
 import co.yedam.board.web.boardFormControl;
@@ -33,7 +39,8 @@ public class FrontController extends HttpServlet {
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		
+		//첫 페이지
+		map.put("/main.do", new MainControl());
 		//상세화면
 		map.put("/boardList.do", new BoardListControl());
 		map.put("/memberList.do", new MemberListControl());
@@ -44,18 +51,18 @@ public class FrontController extends HttpServlet {
 		map.put("/login.do", new LoginControl());
 //		//로그아웃
 		map.put("/logout.do", new LogoutControl());
-//		//등록화면
-//		map.put("/boardForm.do", new boardFormControl());
-//		map.put("/addBoard.do", new AddBoardControl());
-////		//수정화면
-//		map.put("/modifyForm.do", new ModifyControl());
-//		map.put("/modifyBoard.do", new ModifyBoardcontrol());
-////		//삭제
-//		map.put("/removeForm.do", new RemoveControl());
-//		map.put("/removeBoard.do", new RemoveBoardControl());
-////		//댓글목록
-//		map.put("/addReply.do", new AddReplyControl());
-//		map.put("/delReply.do", new deleteReplyControl());
+		//등록화면
+		map.put("/boardForm.do", new boardFormControl());
+		map.put("/addBoard.do", new AddBoardControl());
+//		//수정화면
+		map.put("/modifyForm.do", new ModControl());
+		map.put("/modifyBoard.do", new ModifyFormControl());
+//		//삭제
+		map.put("/removeForm.do", new RemoveControl());
+		map.put("/removeBoard.do", new RemoveBoardControl());
+//		//댓글목록
+		map.put("/addReply.do", new AddReplyControl());
+		map.put("/delReply.do", new deleteReplyControl());
 		
 	}
 	
