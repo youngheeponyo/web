@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions SYSTEM "path/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<!-- 적힌 순서대로 적용이 됨 -->
+  <definition name="productPage" template="/WEB-INF/layouts/template.jsp">
+    <put-attribute name="title" value="게시판 템플릿" />
+    <put-attribute name="header" value="/WEB-INF/layouts/header.jsp" />
+    <put-attribute name="body" value="/WEB-INF/layouts/body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
+  </definition>
+  
+  <definition name="WILDCARD:products/*" extends="productPage">
+  	<put-attribute name="body" value="/WEB-INF/products/{1}.jsp" />
+  </definition>
+  
+    <definition name="InfoPage" template="/WEB-INF/layouts/Infotemplate.jsp">
+    <put-attribute name="title" value="상세페이지 템플릿" />
+    <put-attribute name="header2" value="/WEB-INF/layouts/header2.jsp" />
+    <put-attribute name="body2" value="/WEB-INF/layouts/body2.jsp" />
+    <put-attribute name="footer2" value="/WEB-INF/layouts/footer2.jsp" />
+  </definition>
+  
+  <definition name="WILDCARD:product/*" extends="InfoPage">
+  	<put-attribute name="body2" value="/WEB-INF/product/{1}.jsp" />
+  </definition>
+  
+  
+
+</tiles-definitions>
